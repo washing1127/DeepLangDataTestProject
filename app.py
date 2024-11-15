@@ -2,7 +2,7 @@
 Author: washing1127
 Date: 2024-11-15 11:14:52
 LastEditors: washing1127
-LastEditTime: 2024-11-15 11:25:40
+LastEditTime: 2024-11-15 11:37:11
 FilePath: /DeepLangDataTestProject/app.py
 Description: 
 '''
@@ -23,21 +23,14 @@ def html_parser(html: str) -> list[str, str]:
         res = list()
         html = re.sub("\s*", "", html)
         idx = 0
-        print("html",html)
         for i in range(len(html)):
             if html[i-3:i] == "<p>":
                 idx = i
             elif html[i-4:i] == "</p>":
                 res.append(html[idx: i-4])
-        print("res", res)
         for idx, item in enumerate(res):
             res[idx] = re.sub("<.*>", "", item)
-        print("res", res)
         return res
-        # print(html)
-        # res = re.findall("<p>(.*?)</p>", html)
-        # print(res)
-        # return res
     except Exception as e:
         return f"opus! some exception {e}\n{traceback.format_exc()}", "FAILED"
 
